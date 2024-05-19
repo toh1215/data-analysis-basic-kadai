@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun May 19 12:58:37 2024
+
+@author: ttoh1
+"""
+
 #%%
 import numpy as np
 
