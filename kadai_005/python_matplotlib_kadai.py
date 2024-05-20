@@ -4,7 +4,7 @@ Created on Sun May 19 16:09:23 2024
 
 @author: ttoh1
 """
-
+#%%
 import numpy as np
 import matplotlib as mlt
 import matplotlib.image as mpimg

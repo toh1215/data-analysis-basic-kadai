@@ -4,6 +4,7 @@ Created on Mon May 20 06:36:50 2024
 
 @author: ttoh1
 """
+#%%
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -24,6 +25,5 @@ plt.title('カテゴリー別の出現頻度')
 plt.show()
 
 
-
-df.groupby('商品番号')［'注文数'］.sum()
-df.groupby('商品番号')［'注文数'］.describe()
+print(df.groupby('商品番号')['注文数'].sum())
+print(df.groupby('商品番号')['注文数'].describe())
