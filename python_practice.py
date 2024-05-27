@@ -45,7 +45,7 @@ three = np.ones(3)
 three
 three + 3
 
-six_reshape = np.arange(6).reshape(2,3)
+six_reshape = np.arange(6).reshape(2, 3)
 six_reshape
 six_reshape + 1
 six_reshape + np.array([[1, 0, 2],[1, 0, 2]])
@@ -300,6 +300,127 @@ category_df
 
 df = pd.merge(df, category_df[['商品番号', 'カテゴリー']], how='inner', on='商品番号')
 df
+
+#%%
+############# scikit-learn　################
+#%%
+from sklearn.datasets import load_wine
+
+dataset = load_wine()
+dataset.data
+dataset.feature_names
+
+#%%データの取得
+import pandas as pd
+df = pd.DataFrame(data = dataset.data, columns = dataset.feature_names)
+df.head()
+
+dataset.target
+
+df['category'] = dataset.target
+df.head()
+
+df.shape
+
+#%%　サンプルデータの分割
+X = dataset.data
+y = dataset.target
+
+from sklearn.model_selection import train_test_split
+
+train_test_split(X, y, test_size=0.3, random_state=5)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=5)
+
+print(X.shape, X_train.shape, X_test.shape, y.shape, y_train.shape, y_test.shape)
+
+#%% 予測モデルのインスタンス化
+from sklearn.tree import DecisionTreeClassifier
+
+model = DecisionTreeClassifier(random_state=3)
+
+#%% 予測モデルの学習
+model.fit(X_train, y_train)
+
+#%% 予測モデルの評価
+y_pred = model.predict(X_test)
+y_pred
+y_test
+
+from sklearn.metrics import accuracy_score
+
+accuracy_score(y_test, y_pred)
+#accuracy_score(y_pred, y_test)
+
+model.score(X_test, y_test)
+
+#%% 予測
+import numpy as np
+
+X_real = np.array([
+    [13, 1.6, 2.2, 16, 118, 2.6, 2.9, 0.21, 1.6, 5.8, 0.92, 3.2, 1011],
+    [12, 2.8, 2.2, 18, 100, 2.5, 2.3, 0.25, 2.0, 2.2, 1.15, 3.3, 1000],
+    [14, 4.1, 2.7, 24, 101, 1.6, 0.7, 0.53, 1.4, 9.4, 0.61, 1.6, 560]])
+
+model.predict(X_real)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
